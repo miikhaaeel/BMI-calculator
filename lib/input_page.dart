@@ -11,6 +11,10 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Color maleCardColor = kInactiveCardColour;
   Color femaleCardColor = kInactiveCardColour;
+
+  void updateColor() {
+    
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +30,7 @@ class _InputPageState extends State<InputPage> {
                   color: maleCardColor,
                   child: GestureDetector(
                     onTap: () {
-                       setState(() {
+                      setState(() {
                         maleCardColor = kActiveCardColour;
                         femaleCardColor = kInactiveCardColour;
                       });
