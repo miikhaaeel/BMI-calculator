@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'components/constants.dart';
+import 'components/icon_content.dart';
 import 'components/reusable_card.dart';
 
 class InputPage extends StatefulWidget {
@@ -8,6 +9,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColor = kInactiveCardColour;
+  Color femaleCardColor = kInactiveCardColour;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +23,34 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 ReusableCard(
-                  color: Color(0xFF1D1E34),
+                  color: maleCardColor,
+                  child: GestureDetector(
+                    onTap: () {
+                       setState(() {
+                        maleCardColor = kActiveCardColour;
+                        femaleCardColor = kInactiveCardColour;
+                      });
+                    },
+                    child: IconContent(
+                      gender: Icons.male,
+                      icontext: 'Male',
+                    ),
+                  ),
                 ),
                 ReusableCard(
-                  color: Color(0xFF1D1E34),
+                  color: femaleCardColor,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        femaleCardColor = kActiveCardColour;
+                        maleCardColor = kInactiveCardColour;
+                      });
+                    },
+                    child: IconContent(
+                      icontext: 'Female',
+                      gender: Icons.female,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -32,7 +59,8 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 ReusableCard(
-                  color: Color(0xFF1D1E34),
+                  child: Column(),
+                  color: kInactiveCardColour,
                 ),
               ],
             ),
@@ -41,14 +69,24 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 ReusableCard(
-                  color: Color(0xFF1D1E34),
+                  color: kInactiveCardColour,
                 ),
                 ReusableCard(
-                  color: Color(0xFF1D1E34),
+                  color: kInactiveCardColour,
                 ),
               ],
             ),
           ),
+          Container(
+            height: kBottomContainerHeight,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: kBottomContainerColour,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                )),
+          )
         ],
       ),
     );
