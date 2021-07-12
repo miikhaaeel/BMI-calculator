@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'components/constants.dart';
-import 'components/icon_content.dart';
-import 'components/reusable_card.dart';
+import '../components/constants.dart';
+import '../components/icon_content.dart';
+import '../components/reusable_card.dart';
 
 class InputPage extends StatefulWidget {
   @override
