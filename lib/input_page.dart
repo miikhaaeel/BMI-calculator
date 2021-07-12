@@ -8,13 +8,14 @@ class InputPage extends StatefulWidget {
   _InputPageState createState() => _InputPageState();
 }
 
-class _InputPageState extends State<InputPage> {
-  Color maleCardColor = kInactiveCardColour;
-  Color femaleCardColor = kInactiveCardColour;
+enum Gender {
+  male,
+  female,
+}
 
-  void updateColor() {
-    
-  }
+class _InputPageState extends State<InputPage> {
+  Gender? selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,33 +27,41 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: [
-                ReusableCard(
-                  color: maleCardColor,
+                Expanded(
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        maleCardColor = kActiveCardColour;
-                        femaleCardColor = kInactiveCardColour;
+                        // ignore: unnecessary_statements
+                        selectedGender = Gender.male;
                       });
                     },
-                    child: IconContent(
-                      gender: Icons.male,
-                      icontext: 'Male',
+                    child: ReusableCard(
+                      color: selectedGender == Gender.male
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+                      child: IconContent(
+                        gender: Icons.male,
+                        icontext: 'Male',
+                      ),
                     ),
                   ),
                 ),
-                ReusableCard(
-                  color: femaleCardColor,
+                Expanded(
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        femaleCardColor = kActiveCardColour;
-                        maleCardColor = kInactiveCardColour;
+                        // ignore: unnecessary_statements
+                        selectedGender = Gender.female;
                       });
                     },
-                    child: IconContent(
-                      icontext: 'Female',
-                      gender: Icons.female,
+                    child: ReusableCard(
+                      color: selectedGender == Gender.female
+                          ? kActiveCardColour
+                          : kInactiveCardColour,
+                      child: IconContent(
+                        icontext: 'Female',
+                        gender: Icons.female,
+                      ),
                     ),
                   ),
                 ),
@@ -62,9 +71,11 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: [
-                ReusableCard(
-                  child: Column(),
-                  color: kInactiveCardColour,
+                Expanded(
+                  child: ReusableCard(
+                    child: Column(),
+                    color: kInactiveCardColour,
+                  ),
                 ),
               ],
             ),
@@ -72,11 +83,15 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: [
-                ReusableCard(
-                  color: kInactiveCardColour,
+                Expanded(
+                  child: ReusableCard(
+                    color: kInactiveCardColour,
+                  ),
                 ),
-                ReusableCard(
-                  color: kInactiveCardColour,
+                Expanded(
+                  child: ReusableCard(
+                    color: kInactiveCardColour,
+                  ),
                 ),
               ],
             ),
