@@ -15,6 +15,7 @@ enum Gender {
 
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -28,40 +29,36 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPressed: () {
                       setState(() {
                         // ignore: unnecessary_statements
                         selectedGender = Gender.male;
                       });
                     },
-                    child: ReusableCard(
-                      color: selectedGender == Gender.male
-                          ? kActiveCardColour
-                          : kInactiveCardColour,
-                      child: IconContent(
-                        gender: Icons.male,
-                        icontext: 'Male',
-                      ),
+                    color: selectedGender == Gender.male
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
+                    child: IconContent(
+                      gender: Icons.male,
+                      icontext: 'Male',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPressed: () {
                       setState(() {
                         // ignore: unnecessary_statements
                         selectedGender = Gender.female;
                       });
                     },
-                    child: ReusableCard(
-                      color: selectedGender == Gender.female
-                          ? kActiveCardColour
-                          : kInactiveCardColour,
-                      child: IconContent(
-                        icontext: 'Female',
-                        gender: Icons.female,
-                      ),
+                    color: selectedGender == Gender.female
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
+                    child: IconContent(
+                      icontext: 'Female',
+                      gender: Icons.female,
                     ),
                   ),
                 ),
@@ -73,7 +70,52 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
-                    child: Column(),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Height',
+                          style: kLabelTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              height.toString(),
+                              style: kLabelTextStyle2,
+                            ),
+                            Text(
+                              'cm',
+                              style: kLabelTextStyle,
+                            ),
+                          ],
+                        ),
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                              thumbShape:
+                                  RoundSliderThumbShape(enabledThumbRadius: 15),
+                              overlayShape:
+                                  RoundSliderOverlayShape(overlayRadius: 30),
+                              activeTrackColor: Colors.lightGreen[300],
+                              thumbColor: Colors.red,
+                              overlayColor: Color(0x29EB1555)
+                              ),
+                          child: Slider(
+                            value: height.toDouble(),
+                            min: 120,
+                            max: 220,
+                            inactiveColor: Colors.white10,
+                            onChanged: (double newValue) {
+                              setState(() {
+                                height = newValue.round();
+                              });
+                            },
+                          ),
+                        )
+                      ],
+                    ),
                     color: kInactiveCardColour,
                   ),
                 ),
