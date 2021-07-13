@@ -13,4 +13,3 @@ const kLabelTextStyle2 = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
-//(0xFFE15555)
