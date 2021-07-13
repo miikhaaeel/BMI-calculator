@@ -32,7 +32,6 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     onPressed: () {
                       setState(() {
-                        // ignore: unnecessary_statements
                         selectedGender = Gender.male;
                       });
                     },
@@ -49,7 +48,6 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     onPressed: () {
                       setState(() {
-                        // ignore: unnecessary_statements
                         selectedGender = Gender.female;
                       });
                     },
@@ -100,8 +98,7 @@ class _InputPageState extends State<InputPage> {
                                   RoundSliderOverlayShape(overlayRadius: 30),
                               activeTrackColor: Colors.lightGreen[300],
                               thumbColor: Colors.red,
-                              overlayColor: Color(0x29EB1555)
-                              ),
+                              overlayColor: Color(0x29EB1555)),
                           child: Slider(
                             value: height.toDouble(),
                             min: 120,
@@ -142,12 +139,13 @@ class _InputPageState extends State<InputPage> {
             height: kBottomContainerHeight,
             width: double.infinity,
             decoration: BoxDecoration(
-                color: kBottomContainerColour,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                )),
-          )
+              color: kBottomContainerColour,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+            ),
+          ),
         ],
       ),
     );
