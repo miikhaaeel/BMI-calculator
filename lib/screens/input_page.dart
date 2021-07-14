@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import '../components/constants.dart';
 import '../components/icon_content.dart';
@@ -16,6 +18,8 @@ enum Gender {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
+  int weight = 50;
+  int age = 40;
 
   @override
   Widget build(BuildContext context) {
@@ -124,18 +128,101 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Weight',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kLabelTextStyle2,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              icon: Icons.add,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            RoundIconButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                              icon: Icons.remove,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                     color: kInactiveCardColour,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     color: kInactiveCardColour,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Age',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kLabelTextStyle2,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              icon: Icons.add,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            RoundIconButton(
+                              onPressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              icon: Icons.remove,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
           ),
           Container(
+            child: Center(
+              child: Text(
+                'Calculate'.toUpperCase(),
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             height: kBottomContainerHeight,
             width: double.infinity,
             decoration: BoxDecoration(
@@ -148,6 +235,29 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  final IconData? icon;
+  final Function()? onPressed;
+  RoundIconButton({this.icon, this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      elevation: 6,
+      constraints: BoxConstraints.tight(
+        Size.fromRadius(23),
+      ),
+      child: Icon(
+        icon,
+        color: Colors.white,
+      ),
+      onPressed: onPressed,
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4E4F5C),
     );
   }
 }
