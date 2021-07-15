@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:bmi_calculator/components/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import '../components/constants.dart';
 import '../components/icon_content.dart';
@@ -235,29 +236,6 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  final IconData? icon;
-  final Function()? onPressed;
-  RoundIconButton({this.icon, this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      elevation: 7,
-      constraints: BoxConstraints.tight(
-        Size.fromRadius(23),
-      ),
-      child: Icon(
-        icon,
-        color: Colors.white,
-      ),
-      onPressed: onPressed,
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4E4F5C),
     );
   }
 }
