@@ -97,13 +97,14 @@ class _InputPageState extends State<InputPage> {
                         ),
                         SliderTheme(
                           data: SliderTheme.of(context).copyWith(
-                              thumbShape:
-                                  RoundSliderThumbShape(enabledThumbRadius: 15),
-                              overlayShape:
-                                  RoundSliderOverlayShape(overlayRadius: 30),
-                              activeTrackColor: Colors.lightGreen[300],
-                              thumbColor: Colors.red,
-                              overlayColor: Color(0x29EB1555)),
+                            thumbShape:
+                                RoundSliderThumbShape(enabledThumbRadius: 15),
+                            overlayShape:
+                                RoundSliderOverlayShape(overlayRadius: 30),
+                            activeTrackColor: Colors.lightGreen[300],
+                            thumbColor: Colors.red,
+                            overlayColor: Color(0x29EB1555),
+                          ),
                           child: Slider(
                             value: height.toDouble(),
                             min: 120,
