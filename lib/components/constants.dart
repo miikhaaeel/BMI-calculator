@@ -12,4 +12,3 @@ const kLabelTextStyle2 = TextStyle(
   fontSize: 50,
   fontWeight: FontWeight.w900,
 );
-
