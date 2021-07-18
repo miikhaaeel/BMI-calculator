@@ -3,13 +3,15 @@ import 'package:bmi_calculator/components/constants.dart';
 import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:flutter/material.dart';
 
-class ResultPage extends StatefulWidget {
-  @override
-  _ResultPageState createState() => _ResultPageState();
-}
+class ResultPage extends StatelessWidget {
+  final String getResult;
+  final String resultText;
+  final String resultInterpretation;
 
-class _ResultPageState extends State<ResultPage> {
-  int? bmiResult = 0;
+  ResultPage(
+      {required this.resultText,
+      required this.getResult,
+      required this.resultInterpretation});
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +24,12 @@ class _ResultPageState extends State<ResultPage> {
           children: [
             Expanded(
               flex: 1,
-              child: Container(alignment: Alignment.bottomLeft,
+              child: Container(
+                alignment: Alignment.bottomLeft,
                 child: Padding(
-                  
                   padding: const EdgeInsets.all(15),
                   child: Text(
                     'Your Result',
-                  
-
                     style: kLabelTextStyle2,
                   ),
                 ),
@@ -44,21 +44,21 @@ class _ResultPageState extends State<ResultPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      'OVERWEIGHT',
+                      resultText,
                       style: TextStyle(
                           color: Colors.green,
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      bmiResult.toString(),
+                      getResult,
                       style: TextStyle(
                         fontSize: 100,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      'Eat more ijir ijeihr jdfjuhu hufhlsiu houifh ijidfji gosrog ',
+                      resultInterpretation,
                       style: kLabelTextStyle,
                       textAlign: TextAlign.center,
                     ),
