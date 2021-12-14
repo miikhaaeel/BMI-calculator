@@ -26,7 +26,7 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
